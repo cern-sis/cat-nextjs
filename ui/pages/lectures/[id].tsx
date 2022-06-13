@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { Outlet } from "react-router-dom";
 
 import { List, Layout, Typography } from "antd";
@@ -11,30 +11,13 @@ import LOADING_ICON from "../../src/components/LOADING_ICON";
 const { Content } = Layout;
 const { Title } = Typography;
 
-const Lecture = () => {
+const Lecture = (props) => {
+  const { lecture } = props;
   const router = useRouter();
-  const { id } = router.query;
-  const [lecture, setLecture] = useState<any>({});
-  const [loading, setLoading] = useState(false);
-
-  const fetchLecture = async () => {
-    try {
-      setLoading(true);
-      const results = await getApiRoot().get(`/lectures/${id}/`);
-      setLoading(false);
-      setLecture(results.data);
-    } catch (error) {
-      setLecture({});
-    }
-  };
-
-  useEffect(() => {
-    fetchLecture();
-  }, [id]);
 
   return (
     <Content className="atc-content lecture-page">
-      {loading ? (
+      {router.isFallback ? (
         <LOADING_ICON />
       ) : (
         <div className="video-box">
@@ -116,3 +99,38 @@ const Lecture = () => {
 };
 
 export default Lecture;
+
+export async function getStaticProps(context) {
+  let lectures;
+  try {
+    lectures = await getApiRoot().get(`/lectures/${context.params.id}/`);
+  } catch (e) {
+    return { notFound: true };
+  }
+
+  if (!lectures.data) {
+    return { notFound: true };
+  }
+
+  return {
+    props: {
+      lecture: lectures.data,
+    },
+  };
+}
+
+export const getStaticPaths = async () => {
+  try {
+    const response = await getApiRoot().get(`/lectures`);
+    const results = response.data.results;
+    const paths = results.map((result) => ({
+      params: { id: `${result.id}` },
+    }));
+    return {
+      paths,
+      fallback: true,
+    };
+  } catch (e) {
+    return { notFound: true };
+  }
+};
