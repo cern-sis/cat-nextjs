@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography } from "antd";
-import "./SUGGESTION_BOX.css";
+
 import { getReveal } from "../events/reveal";
 
 const { Title } = Typography;

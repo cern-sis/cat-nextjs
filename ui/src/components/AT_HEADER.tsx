@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Layout, Button, Typography, Row, Col, Drawer } from "antd";
 import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 
-import "./AT_HEADER.css";
+
 import SEARCH_BAR from "./SEARCH_BAR";
 import MENU from "./MENU";
 
@@ -13,7 +13,8 @@ const { Title } = Typography;
 function AT_HEADER() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [state, setState] = useState({ collapsed: true });
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const [screenWidth, setScreenWidth] = useState(typeof window !== 'undefined' ? window.innerWidth:0);
   const [header, setHeader] = useState(false);
 
   const toggleCollapsed = (e: any) => {
@@ -44,7 +45,10 @@ function AT_HEADER() {
     }
   };
 
-  window.addEventListener("scroll", changeBackground);
+  if (typeof window !== 'undefined') {
+    //here `window` is available
+    window.addEventListener("scroll", changeBackground);
+  }
 
   return (
     <Header id="atc-header">

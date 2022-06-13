@@ -14,7 +14,10 @@ const reveal = () => {
   }
 };
 
-window.addEventListener("scroll", reveal);
+if (typeof window !== 'undefined') {
+  window.addEventListener("scroll", reveal);
+}
+
 
 export function getReveal() {
   return reveal;

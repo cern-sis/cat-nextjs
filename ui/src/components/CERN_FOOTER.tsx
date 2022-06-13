@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link  from "next/link";
 import { Layout, Row, Col, Typography, Menu } from "antd";
-import "./CERN_FOOTER.css";
+
 
 const { Footer } = Layout;
 const { Title } = Typography;
@@ -98,7 +98,7 @@ function CERN_FOOTER() {
 
                   <Menu className="menu nav">
                     <Menu.Item>
-                      <Link to={`/about-us/`}>About</Link>
+                      <Link href={`/about-us/`}>About</Link>
                     </Menu.Item>
 
                     <Menu.Item>

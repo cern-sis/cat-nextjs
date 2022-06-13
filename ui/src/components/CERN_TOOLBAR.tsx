@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Typography, Menu } from "antd";
-import "./CERN_TOOLBAR.css";
+
 
 const { Header } = Layout;
 const { Title } = Typography;
