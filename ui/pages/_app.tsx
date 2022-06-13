@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-// import App from 'next/app'
 import { Layout } from "antd";
 import { AT_HEADER, CERN_FOOTER, CERN_TOOLBAR } from "../components";
 import "../styles/index.css";

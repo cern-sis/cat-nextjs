@@ -101,7 +101,7 @@
   margin: 0 0 2.5rem;
 }
 
-.cern-footer .footer-first-col:after {
+.footer-first-col:after {
   content: "";
   width: 2px;
   height: 100%;

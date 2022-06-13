@@ -1,18 +1,19 @@
 import React from "react";
 import Link  from "next/link";
 import { Layout, Row, Col, Typography, Menu } from "antd";
-
+import styles from "../../styles/footer.module.css"
+import cx from "classnames"
 
 const { Footer } = Layout;
 const { Title } = Typography;
 
 function CERN_FOOTER() {
   return (
-    <Footer id="cern-footer">
-      <div className="footer">
-        <Row className="row" justify="space-between" gutter={12}>
+    <Footer className={styles["cern-footer"]}>
+      <div className={styles.footer}>
+        <Row className={styles.row} justify="space-between" gutter={12}>
           <Col
-            className="footer-first-col"
+            className={styles["footer-first-col"]}
             key="footer-first-col"
             xs={24}
             sm={24}
@@ -26,13 +27,13 @@ function CERN_FOOTER() {
             >
               <Title
                 level={2}
-                className="visually-hidden"
+                className={styles["visually-hidden"]}
                 id="block-cernclean-footer-menu"
               >
                 Footer menu
               </Title>
 
-              <Menu className="menu nav">
+              <Menu className={cx(styles.menu,styles.nav)}>
                 <Menu.Item>
                   <Typography.Link href="https://home.cern">
                     CERN
@@ -43,15 +44,15 @@ function CERN_FOOTER() {
           </Col>
 
           <Col
-            className="footer-second-col"
+            className={styles["footer-second-col"]}
             key="footer-second-col"
             xs={24}
             sm={24}
             md={8}
             lg={6}
           >
-            <div className="mb-4">
-              <div className="region-footercolumn2">
+            <div className={styles["mb-4"]}>
+              <div className={styles["region-footercolumn2"]}>
                 <nav
                   role="navigation"
                   aria-labelledby="block-generalinfo-2-menu"
@@ -60,7 +61,7 @@ function CERN_FOOTER() {
                   <Title level={2} id="block-generalinfo-2-menu">
                     General info
                   </Title>
-                  <Menu className="menu nav">
+                  <Menu className={cx(styles.menu,styles.nav)}>
                     <Menu.Item>
                       <Typography.Link href="https://home.cern/data-privacy-protection-policy">
                         Privacy policy
@@ -78,15 +79,15 @@ function CERN_FOOTER() {
           </Col>
 
           <Col
-            className="footer-third-col"
+            className={styles["footer-third-col"]}
             key="footer-third-col"
             xs={24}
             sm={24}
             md={8}
             lg={6}
           >
-            <div className="mb-4">
-              <div className="region region-footercolumn3">
+            <div className={styles["mb-4"]}>
+              <div className={cx(styles.region, styles["region-footercolumn3"])}>
                 <nav
                   role="navigation"
                   aria-labelledby="block-cernandyou-2-menu"
@@ -96,7 +97,7 @@ function CERN_FOOTER() {
                     Academic Training Committee
                   </Title>
 
-                  <Menu className="menu nav">
+                  <Menu className={cx(styles.menu, styles.nav)}>
                     <Menu.Item>
                       <Link href={`/about-us/`}>About</Link>
                     </Menu.Item>
@@ -127,7 +128,7 @@ function CERN_FOOTER() {
             </div>
           </Col>
 
-          <Col className="logo" key="logo" xs={24} sm={24} md={1} lg={6}>
+          <Col className={styles.logo} key="logo" xs={24} sm={24} md={1} lg={6}>
             <Typography.Link
               href="https://home.cern/"
               title="CERN"
@@ -143,7 +144,7 @@ function CERN_FOOTER() {
         </Row>
       </div>
 
-      <div className="copy-wrapper light">
+      <div className={cx(styles["copy-wrapper"], styles.light)}>
         <Typography.Link href="https://copyright.web.cern.ch/">
           Copyright
         </Typography.Link>

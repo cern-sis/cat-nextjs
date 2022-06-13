@@ -167,15 +167,23 @@
   background-color: transparent;
   border-radius: 5px;
   min-height: 150px;
+  border-color: transparent;
+  box-shadow: none;
 }
 
-.video-card .card-content {
+.video-card:hover {
+  max-height: 10px;
+  transition: 0.5s;
+}
+
+
+.card-content {
   padding: 0 0 0 12px;
   margin-left: -8px;
   box-shadow: inset 0 0 80px transparent;
 }
 
-.video-card .duration {
+.duration {
   position: relative;
   bottom: 34px;
   right: 10px;
@@ -207,12 +215,8 @@
   transition: 0.3s;
 }
 
-.video-card:hover {
-  max-height: 10px;
-  transition: 0.5s;
-}
 
-.ant-card-cover img {
+.img {
   border-radius: 5px;
   height: 200px;
   object-fit: cover;
