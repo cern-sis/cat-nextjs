@@ -25,7 +25,7 @@ const Lecture = (props) => {
             <div className="video-window">
               <iframe
                 title={lecture.title}
-                src={`https://cds.cern.ch/video/${id}?showTitle=true`}
+                src={`https://cds.cern.ch/video/${lecture.id}?showTitle=true`}
                 allowFullScreen
               />
             </div>

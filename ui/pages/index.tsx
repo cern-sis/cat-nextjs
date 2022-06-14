@@ -47,11 +47,10 @@ function App() {
   //   window.scrollTo(0, 0);
   // }
 
-
   return (
-    <Content id="atc-content">
-      <div>sas</div>
-    </Content>
+    <>
+      <div>test</div>
+    </>
   );
 }
 
