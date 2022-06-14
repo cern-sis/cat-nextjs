@@ -16,7 +16,7 @@ const Lecture = (props) => {
   const router = useRouter();
   return (
     <Content className="atc-content lecture-page">
-      {router.isFallback ? (
+      {lecture ==null ? (
         <LOADING_ICON />
       ) : (
         <div className="video-box">
