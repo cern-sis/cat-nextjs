@@ -100,8 +100,10 @@ const Lecture = (props) => {
 export default Lecture;
 
 export async function getServerSideProps(context) {
-  const lecture = await getApiRoot().get(`/lectures/${context.query.id}/`);
-  return {
-    props: { lecture: lecture.data },
-  };
+  try {
+    const lecture = await getApiRoot().get(`/lectures/${context.query.id}/`);
+    return { props: { lecture: lecture.data } };
+  } catch (error) {
+    return { notFound: true };
+  }
 }
