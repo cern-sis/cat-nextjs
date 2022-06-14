@@ -104,13 +104,10 @@ export default Lecture;
 export async function getStaticProps(context) {
   let lectures;
   try {
-    console.log("BEFORE");
     lectures = await axios.get(
       `http://localhost:3000/api/lectures/${context.params.id}/`
     );
-    console.log("AFTER");
   } catch (e) {
-    console.log(e);
     return { notFound: true };
   }
 
