@@ -7,6 +7,7 @@ import { DownloadOutlined } from "@ant-design/icons";
 
 import { getApiRoot } from "../../src/api/api_root";
 import LOADING_ICON from "../../src/components/LOADING_ICON";
+import axios from "axios";
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -103,12 +104,13 @@ export default Lecture;
 export async function getStaticProps(context) {
   let lectures;
   try {
-    lectures = await getApiRoot().get(`/lectures/${context.params.id}/`);
+    console.log("BEFORE");
+    lectures = await axios.get(
+      `http://localhost:3000/api/lectures/${context.params.id}/`
+    );
+    console.log("AFTER");
   } catch (e) {
-    return { notFound: true };
-  }
-
-  if (!lectures.data) {
+    console.log(e);
     return { notFound: true };
   }
 
