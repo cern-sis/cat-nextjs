@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import { Layout, Button, Typography, Row, Col, Drawer } from "antd";
 import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 
-import SEARCH_BAR from "./SEARCH_BAR";
-import MENU from "./MENU";
 import Link from "next/link";
+
+import { MENU, SEARCH_BAR } from ".";
 
 const { Header } = Layout;
 const { Title } = Typography;

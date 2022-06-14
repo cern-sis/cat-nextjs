@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import { Input, Button, Menu } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
@@ -7,9 +6,6 @@ import { useRouter } from "next/router";
 function SEARCH_BAR() {
   const router = useRouter();
 
-  // let navigate = useNavigate();
-  // const [searchQuery] = useSearchParams();
-  // const searchValue = searchQuery.get("search") || "";
   let [searchTerm, setSearchTerm] = useState("");
 
   const onKeyDown = (ev: any) => {
