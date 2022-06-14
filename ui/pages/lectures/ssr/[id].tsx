@@ -20,7 +20,7 @@ const Lecture = (props) => {
         <LOADING_ICON />
       ) : (
         <div className="video-box">
-          {lecture?.type && lecture.type.includes("video") && (
+          {lecture.type && lecture.type.includes("video") && (
             <div className="video-window">
               <iframe
                 title={lecture.title}
@@ -30,7 +30,7 @@ const Lecture = (props) => {
             </div>
           )}
           <div className="lecture-details">
-            <Title level={3}>{lecture?.speaker}</Title>
+            <Title level={3}>{lecture.speaker}</Title>
             <Title>{lecture.title}</Title>
             <div className="details">
               {lecture.date && lecture.date !== "" && (
