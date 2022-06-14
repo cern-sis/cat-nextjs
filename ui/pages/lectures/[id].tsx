@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import { Outlet } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const Lecture = (props) => {
 
   return (
     <Content className="atc-content lecture-page">
-      {router.isFallback ? (
+      {lecture == null ? (
         <LOADING_ICON />
       ) : (
         <div className="video-box">
