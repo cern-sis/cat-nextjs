@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
 import { Layout, Pagination, List, Typography, Row, Col, Empty } from "antd";
 import { FileFilled } from "@ant-design/icons";
 
 import { LOADING_ICON } from "../../components";
 import Link from "next/link";
+import { getApiRoot } from "../../src/api/api_root";
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -16,7 +16,6 @@ const Search = ({ lectures, total, searchValue }) => {
   const [pageSize, setPageSize] = useState(PAGE_SIZE);
 
   let loading = false;
-  console.log(lectures);
 
   const onChange = (page: number) => {
     setCurrentPage(page);
@@ -102,7 +101,6 @@ const Search = ({ lectures, total, searchValue }) => {
                     );
                   })
                 )}
-                <Outlet />
               </Row>
 
               <Row justify="end">
@@ -128,10 +126,8 @@ const Search = ({ lectures, total, searchValue }) => {
 export async function getServerSideProps(context) {
   const searchValue = context.query["search"];
   // Fetch data from external API
-  const res = await fetch(
-    `http://localhost:8000/api/v1/search/lectures?search=${searchValue}`
-  );
-  const { results, count } = await res.json();
+  const res = await getApiRoot().get(`/search/lectures?search=${searchValue}`);
+  const { results, count } = await res.data;
 
   // Pass data to the page via props
   return {
