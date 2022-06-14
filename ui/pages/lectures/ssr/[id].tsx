@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Outlet } from "react-router-dom";
 
 import { List, Layout, Typography } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 
-import { getApiRoot } from "../../src/api/api_root";
-import LOADING_ICON from "../../src/components/LOADING_ICON";
-import axios from "axios";
+import { getApiRoot } from "../../../src/api/api_root";
+import LOADING_ICON from "../../../src/components/LOADING_ICON";
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -17,7 +16,7 @@ const Lecture = (props) => {
   const router = useRouter();
   return (
     <Content className="atc-content lecture-page">
-      {lecture == null ? (
+      {router.isFallback ? (
         <LOADING_ICON />
       ) : (
         <div className="video-box">
@@ -94,42 +93,15 @@ const Lecture = (props) => {
           </div>
         </div>
       )}
-      </Content>
+    </Content>
   );
 };
 
 export default Lecture;
 
-export async function getStaticProps(context) {
-  let lectures;
-  try {
-    lectures = await axios.get(
-      `http://localhost:3000/api/lectures/${context.params.id}/`
-    );
-  } catch (e) {
-    return { notFound: true };
-  }
-
+export async function getServerSideProps(context) {
+  const lecture = await getApiRoot().get(`/lectures/${context.query.id}/`);
   return {
-    props: {
-      lecture: lectures.data,
-    },
-    revalidate: 10,
+    props: { lecture: lecture.data },
   };
 }
-
-export const getStaticPaths = async () => {
-  try {
-    const response = await getApiRoot().get(`/lectures`);
-    const results = response.data.results;
-    const paths = results.map((result) => ({
-      params: { id: `${result.id}` },
-    }));
-    return {
-      paths,
-      fallback: true,
-    };
-  } catch (e) {
-    return { notFound: true };
-  }
-};
