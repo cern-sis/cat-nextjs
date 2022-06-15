@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@graphql-tools/schema": "^8.3.14",
+    "@graphql-yoga/node": "^2.9.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -11,6 +13,7 @@
     "@types/react-dom": "^17.0.9",
     "antd": "^4.16.13",
     "axios": "^0.25.0",
+    "graphql": "^16.5.0",
     "history": "^5.1.0",
     "http-proxy-middleware": "^2.0.2",
     "next": "^12.1.6",
