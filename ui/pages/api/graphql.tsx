@@ -1,5 +1,5 @@
 import { createServer } from "@graphql-yoga/node";
-import { findLectureById } from "../../api/psql_client";
+import { findLectureById } from "../../api/db_client";
 
 const typeDefs = `
   type Query {
