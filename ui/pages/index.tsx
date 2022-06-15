@@ -13,32 +13,14 @@ import Link from "next/link"
 import { getPhotos } from "../src/photos/carousel/photos";
 import { PlayCircleOutlined } from "@ant-design/icons";
 import { getApiRoot } from "../src/api/api_root";
-import LOADING_ICON from "../src/components/LOADING_ICON";
 import styles from "../styles/index.module.css"
 
 
 const { Content } = Layout;
 const { Title } = Typography;
 
-function App() {
+function App({results}) {
   const photos = getPhotos();
-  const [lectures, setLectures] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const fetchLectures = async () => {
-    try {
-      setLoading(true);
-      const results = await getApiRoot().get(`/search/lectures/?page_size=12`);
-      setLoading(false);
-      setLectures(results.data.results);
-    } catch (error) {
-      setLectures([]);
-    }
-  };
-
-  useEffect(() => {
-    fetchLectures();
-  }, []);
 
   if (typeof window !== 'undefined') {
     //here `window` is available
@@ -87,10 +69,7 @@ function App() {
           </div>
           .{" "}
           <Row justify="center" gutter={[16, 42]}>
-            {loading ? (
-              <LOADING_ICON />
-            ) : (
-              lectures.map((lecture: any) => {
+            {results.map((lecture: any) => {
                 return (
                   <Col
                     key={lecture.lecture_id}
@@ -148,12 +127,28 @@ function App() {
                   </Col>
                 );
               })
-            )}
+            }
           </Row>
         </div>
       </Fragment>
   </Content>
   );
+}
+
+export const getStaticProps = async () => {
+  let results
+  try {
+     results = await getApiRoot().get(`/search/lectures/?page_size=12`);
+    } catch(e){
+      return {
+        notFound: true
+      }
+    }
+    return {
+      props:{
+        results: results.data.results
+      }
+    }
 }
 
 export default App;

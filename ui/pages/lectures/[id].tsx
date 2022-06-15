@@ -15,6 +15,8 @@ const { Title } = Typography;
 const Lecture = (props) => {
   const { lecture } = props;
   const router = useRouter();
+
+
   return (
     <Content className="atc-content lecture-page">
       {lecture == null ? (
