@@ -1,7 +1,7 @@
 import { createServer } from "@graphql-yoga/node";
 import { findLectureById } from "../../api/psql_client";
 
-const typeDefs = /* GraphQL */ `
+const typeDefs = `
   type Query {
     lecture(id: String): Lecture!
   }
@@ -31,10 +31,7 @@ const typeDefs = /* GraphQL */ `
 
 const resolvers = {
   Query: {
-    async lecture(parent, args, context) {
-      const { id } = args;
-      return findLectureById(id);
-    },
+    lecture: async (parent, args, context) => findLectureById(args.id),
   },
 };
 
