@@ -1,4 +1,4 @@
-const baseUrl = "./profiles/";
+const baseUrl = "/profiles/"
 
 const members = [
   {
