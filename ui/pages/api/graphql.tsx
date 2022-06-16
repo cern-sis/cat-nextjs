@@ -4,7 +4,7 @@ import { findLectureById, returnLectures } from "../../api/db_client";
 const typeDefs = `
   type Query {
     lecture(id: String): Lecture!
-    lectures: Lectures!,
+    lectures: Lectures!
   }
   type Lecture {
     id: String
