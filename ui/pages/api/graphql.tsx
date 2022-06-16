@@ -4,6 +4,7 @@ import { findLectureById, returnLectures } from "../../api/db_client";
 const typeDefs = `
   type Query {
     lecture(id: String): Lecture!
+    lectures: Lectures!,
   }
   type Lecture {
     id: String
@@ -27,9 +28,6 @@ const typeDefs = `
     files: [String]
     type: [String]
   }
-  type Query{
-    lectures: Lectures!
-  }
   type Lectures {
     results: [Lecture!]!
   }
@@ -38,7 +36,7 @@ const typeDefs = `
 const resolvers = {
   Query: {
     lecture: async (parent, args, context) => findLectureById(args.id),
-    lectures: async (parent, args, context) => returnLectures()
+    lectures: async (parent, args, context) => returnLectures(),
   },
 };
 
