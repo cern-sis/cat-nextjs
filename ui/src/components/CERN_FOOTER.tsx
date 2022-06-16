@@ -98,7 +98,7 @@ function CERN_FOOTER() {
 
                   <Menu className="menu nav">
                     <Menu.Item>
-                      <Link href={`/about-us/`}>About</Link>
+                      <Link href={`/about/`}>About</Link>
                     </Menu.Item>
 
                     <Menu.Item>

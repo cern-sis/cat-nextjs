@@ -69,7 +69,7 @@ function AboutUs() {
                   />
                 </div>
                 <Title>
-                  <Typography.Link href="/about-us" style={{ color: "#fff" }}>
+                  <Typography.Link href="/about" style={{ color: "#fff" }}>
                     ABOUT US
                   </Typography.Link>
                 </Title>

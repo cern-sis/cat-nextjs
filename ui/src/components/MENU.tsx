@@ -20,7 +20,7 @@ function MENU() {
       overflowedIndicator={false}
     >
       <Menu.Item className="about-us" key="about-us">
-        <LinkRouter to={`/about-us`}>
+        <LinkRouter to={`/about`}>
           <Title level={2} className="about-us-link">
             About
           </Title>

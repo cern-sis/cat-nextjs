@@ -18,8 +18,8 @@ function MENU() {
       className="menu"
       overflowedIndicator={false}
     >
-      <Menu.Item className="about-us" key="about-us">
-        <Link href={`/about-us`}>
+      <Menu.Item className="about" key="about-us">
+        <Link href={`/about`}>
           <Title level={2} className="about-us-link">
             About
           </Title>
